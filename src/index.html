@@ -1,23 +1,33 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="uk">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vanilla App Template</title>
     <link rel="stylesheet" href="./css/styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/iziToast/1.4.0/iziToast.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/simplelightbox/dist/simple-lightbox.min.css"
+    />
+    <title>Image Gallery</title>
   </head>
   <body>
-    <load src="./partials/header.html" icon-path="img/sprite.svg#logo" />
+    <form id="search-form">
+      <input
+        type="text"
+        name="searchQuery"
+        placeholder="Search for images..."
+        required
+      />
+      <button type="submit">Search</button>
+    </form>
+    <div class="gallery"></div>
 
-    <main>
-      <!-- Loads the specified .html file -->
-      <load src="./partials/vite-promo.html" />
-      <load src="./partials/badges.html" />
-    </main>
-
-    <load src="./partials/footer.html" />
-
+    <script src="https://cdn.jsdelivr.net/npm/simplelightbox"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/iziToast/1.4.0/iziToast.min.js"></script>
     <script type="module" src="./main.js"></script>
   </body>
 </html>
