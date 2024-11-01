@@ -7,12 +7,12 @@ import 'izitoast/dist/css/iziToast.min.css';
 
 const searchForm = document.querySelector('#search-form');
 const galleryContainer = document.querySelector('.gallery');
+const loader = document.getElementById('loader'); 
 let lightbox = new SimpleLightbox('.gallery a');
 
 searchForm.addEventListener('submit', async (event) => {
     event.preventDefault();
 
-   
     const query = searchForm.elements['searchQuery']?.value.trim();
     
     if (!query) {
@@ -20,12 +20,8 @@ searchForm.addEventListener('submit', async (event) => {
         return;
     }
 
-    galleryContainer.innerHTML = '';  
-    iziToast.show({
-        title: 'Searching...',
-        message: 'Fetching images from Pixabay',
-        color: 'blue',
-    });
+
+    loader.style.display = 'block'; 
 
     try {
         const images = await fetchImages(query);
@@ -42,6 +38,8 @@ searchForm.addEventListener('submit', async (event) => {
         }
     } catch (error) {
         showError('An error occurred while fetching images. Please try again.');
+    } finally {
+        loader.style.display = 'none'; 
     }
     
     searchForm.reset(); 
